@@ -11,9 +11,10 @@ from carla_data_utils import load_raw_data_infos
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--id", type=int, default=0, required=False)
+    parser.add_argument("--dir", type=str, required=True)
     args = parser.parse_args()
 
-    root_path = Path("/home/jason/Desktop/mmdetection_carla/data/carla_raw")
+    root_path = Path(args.dir)
 
     data_infos = load_raw_data_infos(root_path, args.id)
     data_info = data_infos[0]

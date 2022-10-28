@@ -13,9 +13,9 @@ class Pose:
     y: float
     z: float
     # degree
-    pitch: float
-    yaw: float
     roll: float
+    yaw: float
+    pitch: float
 
     @classmethod
     def from_list(cls, args: List[float]) -> "Pose":
@@ -95,7 +95,7 @@ def load_raw_data_infos(data_path: Path, index: int) -> List[DataInfo]:
                     vehicle_infos.append(
                         VehicleInfo(
                             id=v_id,
-                            angle=info["angle"],
+                            angle=[-a if i==1 else a for i, a in enumerate(info["angle"])],
                             center=info["center"],
                             extent=info["extent"],
                             location=info["location"],
